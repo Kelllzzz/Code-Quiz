@@ -1,14 +1,16 @@
 // assigning variables
-var questions = document.getElementById("questions");
-var startPage = document.getElementById("start-screen");
+var questions = document.getElementById('questions');
+var startPage = document.getElementById('start-screen');
 var timer = document.getElementById('time');
 var choices = document.getElementById('choices')
 var score = 0;
 var currentIdx = 0;
-var endScreen = document.getElementById("end-screen")
+var feedBack = document.getElementById('feedback')
+var endScreen = document.getElementById('end-screen')
 var endScore = document.getElementById('final-score')
 var highScores = document.getElementById('highscores')
-var userInitials = document.getElementById('initials')
+// var initialsInput = 
+
 
 //function to start the quiz
 function startProcess() {
@@ -16,6 +18,7 @@ function startProcess() {
     questions.classList.remove("hide");
     startPage.classList.add("hide");
     displayQuestionAndOptions();
+    feedBack.classList.remove("feedback-hide")
 }
 var button = document.getElementById("start");
 button.addEventListener("click", startProcess, false);
@@ -62,6 +65,7 @@ function displayQuestionAndOptions() {
             } else {
                 wrongAnswerAudio.play();
                 count -= 10
+                
                 displayQuestionAndOptions()
             }
 
@@ -70,17 +74,26 @@ function displayQuestionAndOptions() {
     }
 
 }
-// Quiz End action
-function storeInitials() {
-    endScreen.classList.remove("hide");
-    questions.classList.add("hide");
-    endScore.textContent = score;  // To display final score
-    clearInterval(countdown);
-}
 
+// Quiz End action
 function endQuiz() {
     endScreen.classList.remove("hide");
     questions.classList.add("hide");
     endScore.textContent = score;  // To display final score
     clearInterval(countdown);
 }
+
+var submitbutton = document.getElementById("submit");
+submitbutton.addEventListener("click", storeInitials);
+
+// To store User initials
+function storeInitials() {
+    var userInitials = document.getElementById('initials');
+    var initials = userInitials.value;
+    if (initials.length > 3) {
+        alert("Please enter max of 3 characters.");
+    }
+    console.log({ initials, score });
+    localStorage.setItem(initials, score);
+}
+

@@ -1,10 +1,10 @@
 var highScores = [
     { 
       score: 5,
-      initials:"AB"
+      initials:"ABC"
      },
      { 
       score: 4,
-      initials:"CD"
+      initials:"DEF"
       }
   ];
