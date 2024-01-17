@@ -70,10 +70,10 @@ function displayQuestionAndOptions() {
 }
 // Quiz End action
 function endQuiz() {
-    endScreen.classList.remove("hide")
-    questions.classList.add("hide")
-    endScore.textContent = score
-    clearInterval(countdown)
+    endScreen.classList.remove("hide");
+    questions.classList.add("hide");
+    endScore.textContent = score;  // To display final score
+    clearInterval(countdown);
 }
 
 
