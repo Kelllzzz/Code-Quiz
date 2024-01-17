@@ -12,7 +12,7 @@ var endScore = document.getElementById('final-score')
 function startProcess() {
     console.log("Start button was clicked!");
     questions.classList.remove("hide");
-    startPage.classList.add("hide");  
+    startPage.classList.add("hide");
     displayQuestionAndOptions();
 }
 var button = document.getElementById("start");
@@ -33,11 +33,11 @@ document.getElementById("start").addEventListener("click", function () {
     }, 1000);
 });
 
-// To display questions and options
-
+// audio prompts for correct and wrong answers
 let correctAnswerAudio = new Audio("./assets/sfx/correct.wav");
 let wrongAnswerAudio = new Audio("./assets/sfx/incorrect.wav");
 
+// To display questions and options
 function displayQuestionAndOptions() {
     if (currentIdx === quizData.length) {
         endQuiz()
@@ -59,17 +59,15 @@ function displayQuestionAndOptions() {
                 displayQuestionAndOptions()
             } else {
                 wrongAnswerAudio.play();
-                count-=10
+                count -= 10
                 displayQuestionAndOptions()
             }
 
         });
         choices.appendChild(radioButton);
-        // questions.innerHTML += currentQuiz.options[i] + '<br>';
     }
 
 }
-
 // Quiz End action
 function endQuiz() {
     endScreen.classList.remove("hide")
