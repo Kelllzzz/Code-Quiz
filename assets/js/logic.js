@@ -70,6 +70,13 @@ function displayQuestionAndOptions() {
 
 }
 
+// Quiz End action
+function endQuiz() {
+    endScreen.classList.remove("hide")
+    questions.classList.add("hide")
+    endScore.textContent = score
+    clearInterval(countdown)
+}
 
 
 
