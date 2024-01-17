@@ -7,6 +7,8 @@ var score = 0;
 var currentIdx = 0;
 var endScreen = document.getElementById("end-screen")
 var endScore = document.getElementById('final-score')
+var highScores = document.getElementById('highscores')
+var userInitials = document.getElementById('initials')
 
 //function to start the quiz
 function startProcess() {
@@ -69,16 +71,16 @@ function displayQuestionAndOptions() {
 
 }
 // Quiz End action
-function endQuiz() {
+function storeInitials() {
     endScreen.classList.remove("hide");
     questions.classList.add("hide");
     endScore.textContent = score;  // To display final score
     clearInterval(countdown);
 }
 
-
-
-
-
-
-
+function endQuiz() {
+    endScreen.classList.remove("hide");
+    questions.classList.add("hide");
+    endScore.textContent = score;  // To display final score
+    clearInterval(countdown);
+}
