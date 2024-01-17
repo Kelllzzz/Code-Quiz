@@ -9,8 +9,6 @@ var feedBack = document.getElementById('feedback')
 var endScreen = document.getElementById('end-screen')
 var endScore = document.getElementById('final-score')
 var highScores = document.getElementById('highscores')
-// var initialsInput = 
-
 
 //function to start the quiz
 function startProcess() {
@@ -18,7 +16,6 @@ function startProcess() {
     questions.classList.remove("hide");
     startPage.classList.add("hide");
     displayQuestionAndOptions();
-    feedBack.classList.remove("feedback-hide")
 }
 var button = document.getElementById("start");
 button.addEventListener("click", startProcess, false);
@@ -41,6 +38,7 @@ document.getElementById("start").addEventListener("click", function () {
 // audio prompts for correct and wrong answers
 let correctAnswerAudio = new Audio("./assets/sfx/correct.wav");
 let wrongAnswerAudio = new Audio("./assets/sfx/incorrect.wav");
+feedBack.classList.remove("hide")
 
 // To display questions and options
 function displayQuestionAndOptions() {
@@ -61,13 +59,19 @@ function displayQuestionAndOptions() {
             if (event.target.textContent == currentQuiz.answer) {
                 score++;
                 correctAnswerAudio.play();
+                feedBack.textContent = "Correct!"
                 displayQuestionAndOptions()
             } else {
                 wrongAnswerAudio.play();
+                feedBack.textContent = "Wrong!"
                 count -= 10
 
                 displayQuestionAndOptions()
             }
+            // To clear feedback message
+            setTimeout(() => {
+                feedBack.classList.add("hide")
+            }, 10000)
 
         });
         choices.appendChild(radioButton);
@@ -107,8 +111,8 @@ var highScoresString = JSON.stringify(highScores);
 // Store the JSON string in localStorage under the key 'highscores'
 localStorage.setItem('highScores', highScoresString);
 
- // Get the high scores from local storage
- var HighScores = JSON.parse(localStorage.getItem('highScores')) || [];
+// Get the high scores from local storage
+var HighScores = JSON.parse(localStorage.getItem('highScores')) || [];
 
 // Function to update high scores
 function updateHighScores(newScore, initials) {
