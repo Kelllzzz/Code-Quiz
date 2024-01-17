@@ -65,7 +65,7 @@ function displayQuestionAndOptions() {
             } else {
                 wrongAnswerAudio.play();
                 count -= 10
-                
+
                 displayQuestionAndOptions()
             }
 
@@ -87,18 +87,48 @@ function endQuiz() {
 var submitbutton = document.getElementById("submit");
 var userInitials = document.getElementById('initials');
 
-submitbutton.addEventListener("click", function(event) {
+submitbutton.addEventListener("click", function (event) {
     // Prevents the form from being submitted normally
     event.preventDefault();
 
-   // Check the length of the input
+    // Check the length of the input
     var initials = userInitials.value;
     if (initials.length > 3) {
         alert("Please enter max of 3 characters.");
     } else {
-console.log({ initials, score });
+        console.log({ initials, score });
     }
-    
     localStorage.setItem(initials, score);
 })
+
+// Convert the highScores array to a JSON string
+var highScoresString = JSON.stringify(highScores);
+
+// Store the JSON string in localStorage under the key 'highscores'
+localStorage.setItem('highScores', highScoresString);
+
+ // Get the high scores from local storage
+ var HighScores = JSON.parse(localStorage.getItem('highScores')) || [];
+
+// Function to update high scores
+function updateHighScores(newScore, initials) {
+    // Create a new high score object
+    var newHighScore = {
+        score: newScore,
+        initials: initials,
+    };
+
+    // Add the new high score to the high scores array
+    HighScoresighScores.push(newHighScore);
+
+    // Sort the high scores array in descending order by score
+    HighScoresighScores.sort(function (a, b) {
+        return b.score - a.score;
+    });
+
+    // Remove the lowest score if there are more than 5 high scores
+    if (HighScoresighScores.length > 5) {
+        HighScores.pop();
+    }
+}
 
