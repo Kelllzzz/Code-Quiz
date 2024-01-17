@@ -83,17 +83,22 @@ function endQuiz() {
     clearInterval(countdown);
 }
 
-var submitbutton = document.getElementById("submit");
-submitbutton.addEventListener("click", storeInitials);
-
 // To store User initials
-function storeInitials() {
-    var userInitials = document.getElementById('initials');
+var submitbutton = document.getElementById("submit");
+var userInitials = document.getElementById('initials');
+
+submitbutton.addEventListener("click", function(event) {
+    // Prevents the form from being submitted normally
+    event.preventDefault();
+
+   // Check the length of the input
     var initials = userInitials.value;
     if (initials.length > 3) {
         alert("Please enter max of 3 characters.");
+    } else {
+console.log({ initials, score });
     }
-    console.log({ initials, score });
+    
     localStorage.setItem(initials, score);
-}
+})
 
