@@ -9,6 +9,8 @@ var feedBack = document.getElementById('feedback')
 var endScreen = document.getElementById('end-screen')
 var endScore = document.getElementById('final-score')
 var highScores = document.getElementById('highscores')
+var listOfHighscores = JSON.parse(localStorage.getItem("userScores"))
+
 
 //function to start the quiz
 function startProcess() {
@@ -88,7 +90,7 @@ function endQuiz() {
 }
 
 // To store User initials
-var submitbutton = document.getElementById("submit");
+var submitbutton = document.getElementById('submit');
 var userInitials = document.getElementById('initials');
 
 submitbutton.addEventListener("click", function (event) {
@@ -102,37 +104,9 @@ submitbutton.addEventListener("click", function (event) {
     } else {
         console.log({ initials, score });
     }
-    localStorage.setItem(initials, score);
-})
-
-// Convert the highScores array to a JSON string
-var highScoresString = JSON.stringify(highScores);
-
-// Store the JSON string in localStorage under the key 'highscores'
-localStorage.setItem('highScores', highScoresString);
-
-// Get the high scores from local storage
-var HighScores = JSON.parse(localStorage.getItem('highScores')) || [];
-
-// Function to update high scores
-function updateHighScores(newScore, initials) {
-    // Create a new high score object
-    var newHighScore = {
-        score: newScore,
-        initials: initials,
-    };
-
-    // Add the new high score to the high scores array
-    HighScoresighScores.push(newHighScore);
-
-    // Sort the high scores array in descending order by score
-    HighScoresighScores.sort(function (a, b) {
-        return b.score - a.score;
-    });
-
-    // Remove the lowest score if there are more than 5 high scores
-    if (HighScoresighScores.length > 5) {
-        HighScores.pop();
+    var Input = {initials, score
     }
-}
+    listOfHighscores.push (Input)
+    localStorage.setItem("userScores", JSON.stringify(listOfHighscores));
+})
 
