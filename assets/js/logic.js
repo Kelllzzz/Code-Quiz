@@ -111,5 +111,6 @@ submitbutton.addEventListener("click", function (event) {
         listOfHighscores.push(Input)
         localStorage.setItem("userScores", JSON.stringify(listOfHighscores));
     }
+    window.location.href = "highscores.html";  //returns to the highscore page upon submission
 })
 
