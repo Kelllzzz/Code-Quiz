@@ -103,7 +103,7 @@ submitbutton.addEventListener("click", function (event) {
     var initials = userInitials.value;
     if (initials.length > 3) {
         alert("Please enter max of 3 characters.");
-
+        return
     } else {
         var Input = {
             initials, score
