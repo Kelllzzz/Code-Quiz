@@ -10,6 +10,8 @@ var endScreen = document.getElementById('end-screen')
 var endScore = document.getElementById('final-score')
 var highScores = document.getElementById('highscores')
 var listOfHighscores = JSON.parse(localStorage.getItem("userScores"))
+var storedScores = localStorage.getItem("userScores");
+var listOfHighscores = storedScores ? JSON.parse(storedScores) : [];
 
 
 //function to start the quiz
@@ -101,12 +103,13 @@ submitbutton.addEventListener("click", function (event) {
     var initials = userInitials.value;
     if (initials.length > 3) {
         alert("Please enter max of 3 characters.");
+
     } else {
-        console.log({ initials, score });
+        var Input = {
+            initials, score
+        }
+        listOfHighscores.push(Input)
+        localStorage.setItem("userScores", JSON.stringify(listOfHighscores));
     }
-    var Input = {initials, score
-    }
-    listOfHighscores.push (Input)
-    localStorage.setItem("userScores", JSON.stringify(listOfHighscores));
 })
 
