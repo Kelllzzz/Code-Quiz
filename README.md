@@ -13,6 +13,7 @@ N/A.
 To use this website,the following image shows the web application's appearance and functionality:
 
 ![when Start Quiz button is clicked, a timer begins to count down.if the user selects a wrong answer, a chime can be heard but if the user selects the right answer, a different chime can be heard. The game ends if the user is unable to answer the questions within the given time biut if the game is completed before the timer counts down, the users score is displayed and intials stored at the click of the submit button.](./assets/images/Screenshot%202.jpeg)
+![Image 2](./assets/images/Screenshot%203.png)
 
 ## Access
 
@@ -21,4 +22,4 @@ https://kelllzzz.github.io/Code-Quiz/
 
 ## Credits
 
-Rory
+N/A
